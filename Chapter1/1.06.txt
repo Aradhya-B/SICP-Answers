@@ -1,0 +1,13 @@
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+(define (sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+          guess
+          (sqrt-iter (improve guess x)
+                     x)))
+
+; In an applicative-order evaluation, the value of the else-clause in the above procedure will be evaluated before the overall procedure is, however, since
+; "sqrt-iter" is a recursively defined function, the else-clause argument in the procedure definition will lead to an infinite recursion evaluation therefore
+; the procedure will never be completed. 
