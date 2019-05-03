@@ -1,0 +1,8 @@
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
+
+; A conditional procedure "a-plus-abs-b" that takes two formal parameters, a and b, is being defined.
+; The condition simply checks whether or not the passed argument "b" is greater than 0 or not.
+; If b is greater than 0, then the procedure returns the sum of a and b.
+; If b is less than 0, then the procedure returns the difference of a and b, however, this difference
+; is the same as the sum of a and the absolute value of b because it is only a difference when b is negative. 
