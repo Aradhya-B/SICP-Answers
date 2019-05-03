@@ -1,0 +1,14 @@
+(define (large_sum_of_squares x y z)
+  (- (+ (square x)
+        (square y)
+        (square z))
+     (square (min x y z))))
+
+(define (square x) (* x x))
+
+; The sum of the squares of the two largest numbers in a list of three numbers
+; is the difference between the sum of the squares of all three numbers
+; and the square of the smallest number in the list.
+
+; The smallest number in the list can be found using the primitive lisp
+; procedure (min).
