@@ -1,0 +1,18 @@
+(define (p) (p))
+
+(define (test x y)
+  (if (= x 0)
+      0
+      y))
+
+; Test
+
+(test 0 (p))
+
+; In applicative-order evaluation, the body of the nested procedures will be evaluated before moving forward,
+; so (p) will be evaluated before the body of test is. (p) is recursively defined to return itself, therefore,
+; evaluation of (p) will result in infinite recursion and nothing will be returned from the Test procedure.
+
+; If the interpreter was using normal-order evaluation, then the Test procedure would have to return the value 0. This is because
+; it will check the condition whether or not the argument passed for the formal parameter x is 0 before it will evaluate (p), and, in
+; this case, since the argument passed for x is indeed 0, the value 0 will be returned before the argument for the formal parameter y can. 
