@@ -1,0 +1,33 @@
+; The "good-enough?" test is not good for computing the square roots of very small numbers because the procedure may end too early given
+; that the tolerance is relatively much greater than the number itself. This would lead to inaccurate results. The test is not good for
+; large numbers either because the procedure is relatively slow and the time it takes to compute the square root increases as the initial number gets
+; bigger, given that the first guess is always one. Therefore, if a number is large enough, it might take an infinite amount of time to compute
+; the square root using the "good-enough?" test.
+
+#lang sicp ; This is a special Scheme library in Dr. Racket that is optimized for learning from SICP
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (< (/ (abs (- (improve guess x) guess)) guess) 0.000001))
+
+(define (square x)
+  (* x x))
+
+(define (abs x)
+  (if (< x 0)
+      (* x -1)
+       x))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
